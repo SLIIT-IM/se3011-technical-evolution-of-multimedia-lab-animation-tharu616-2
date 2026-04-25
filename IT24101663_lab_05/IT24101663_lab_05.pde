@@ -1,11 +1,3 @@
-// ─────────────────────────────────────────────
-//  CATCH THE ORB — SE3011 Lab 05 Final Task
-//  Features: bouncing orb, player, easing helper,
-//  trail toggle, timer, score, gold orb every 5 catches,
-//  second orb, speed boost on catch
-// ─────────────────────────────────────────────
-
-// --- Game State ---
 int state = 0;       // 0=start, 1=play, 2=end
 int startTime;
 int gameDuration = 30;
@@ -40,7 +32,6 @@ boolean goldActive = false;
 int goldStartTime = 0;
 int goldDuration = 8000; // disappears after 8 seconds
 
-// ─────────────────────────────────────────────
 void setup() {
   size(700, 350);
   textFont(createFont("Arial Bold", 16));
@@ -56,7 +47,6 @@ void resetPositions() {
   gox = 300; goy = 150;
 }
 
-// ─────────────────────────────────────────────
 void draw() {
   // --- Trail / Clear ---
   if (state == 1 && trails) {
@@ -72,7 +62,6 @@ void draw() {
   if (state == 2) drawEndScreen();
 }
 
-// ─────────────────────────────────────────────
 void drawStartScreen() {
   textAlign(CENTER, CENTER);
   fill(30, 80, 200);
@@ -90,7 +79,6 @@ void drawStartScreen() {
   text("Press ENTER to Start", width/2, height/2 + 100);
 }
 
-// ─────────────────────────────────────────────
 void drawGame() {
   // Timer check
   int elapsed = (millis() - startTime) / 1000;
@@ -178,7 +166,6 @@ void drawGame() {
     }
   }
 
-  // ═══ DRAW EVERYTHING ═══
 
   // Helper line (dashed look)
   stroke(100, 200, 100, 80);
@@ -233,7 +220,6 @@ void drawGame() {
   text("Trails: " + (trails ? "ON" : "OFF") + " (T)  |  Speed: +/-", width/2 - 120, 15);
 }
 
-// ─────────────────────────────────────────────
 void drawEndScreen() {
   textAlign(CENTER, CENTER);
 
@@ -261,7 +247,6 @@ void drawEndScreen() {
   text("Press R to Restart", width/2, height/2 + 70);
 }
 
-// ─────────────────────────────────────────────
 void keyPressed() {
   // Start game
   if (state == 0 && keyCode == ENTER) {
